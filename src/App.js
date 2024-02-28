@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import "./i18n";
+
 import Draggable from "react-draggable";
 import images from "./images";
 
@@ -12,6 +15,12 @@ function App() {
   const [index, setIndex] = useState(0); // 0: original window, 1: base image window, 2: uncensor image window
 
   const bc = useMemo(() => new BroadcastChannel("biya"), []);
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   const handleOpenNewWindow = () => {
     // manual open is also ok
@@ -139,6 +148,22 @@ function App() {
       )}
       <div className="App w-[100vw] h-[100vh] bg-gray-50 dark:bg-gray-800 pt-2">
         <div className="container mx-auto text-center pt-2 px-1">
+          <div className="my-6 mx-auto text-white">
+            <h1>{t("welcome")}</h1>
+            <p>{t("hello")}</p>
+            <button
+              className="bg-slate-50 ml-4 text-black"
+              onClick={() => changeLanguage("en")}
+            >
+              English
+            </button>
+            <button
+              className="bg-slate-50 ml-4 text-black"
+              onClick={() => changeLanguage("vi")}
+            >
+              Tiếng Việt
+            </button>
+          </div>
           {index === 0 ? (
             <>
               <h1 className="text-4xl font-extrabold leading-none tracking-tight text-gray-900  dark:text-white uppercase mb-2">
