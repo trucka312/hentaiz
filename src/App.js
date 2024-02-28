@@ -223,7 +223,7 @@ function App() {
               {index === 0
                 ? "Mở ảnh sếch"
                 : index === 1
-                ? "Mở gương thần"
+                ? "Mở kính chiếu xuyên quần áo =)))"
                 : "Đóng gương thần"}
             </button>
           </div>
